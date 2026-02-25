@@ -45,12 +45,20 @@
                     <button>Filter</button>
                 </article>
             </article>
-            <section v-for="content of moodleData">
-              <section v-for="something of content.weeks">
-                <div id="circle"></div>
-                <h2>{{ something.week_label}}</h2>
-                <p>{{ something.days}}</p>
-              </section>
+            <section v-for="content of moodleData" class="week">
+                <div id="circle">
+                    <h2>8</h2>
+                </div>
+                <article>
+                    <h2>Fra statisk til dynamisk</h2>
+                    <div class="days">
+                    <p>Mandag</p>
+                    <p>Tirsdag</p>
+                    <p>Onsdag</p>
+                    <p>Torsdag</p>
+                    <p>Fredag</p>
+                </div>
+                </article>
             </section>
         </section>
 
