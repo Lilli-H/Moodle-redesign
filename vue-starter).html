@@ -12,7 +12,7 @@
 
 <body>
     <div id="app">
-        <section >
+        <section>
             <article>
                 <h1>Multimedieproduktion 2</h1>
                 <article>
@@ -21,9 +21,11 @@
                 </article>
             </article>
             <section v-for="content of moodleData">
+              <section v-for="something of content.weeks">
                 <div id="circle"></div>
-                <h2>Fra statisk til dynamisk</h2>
-                <p>Mandag</p>
+                <h2>{{ something.week_label}}</h2>
+                <p>{{ something.days}}</p>
+              </section>
             </section>
         </section>
 
