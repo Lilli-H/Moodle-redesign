@@ -12,9 +12,22 @@
 
 <body>
     <div id="app">
-        <article>
+        <section >
+            <article>
+                <h1>Multimedieproduktion 2</h1>
+                <article>
+                    <input type="text" placeholder="Søg">
+                    <button>Filter</button>
+                </article>
+            </article>
+            <section v-for="content of moodleData">
+                <div id="circle"></div>
+                <h2>Fra statisk til dynamisk</h2>
+                <p>Mandag</p>
+            </section>
+        </section>
 
-        </article>
+
     </div>
 
     <!-- Vue import (skal komme før Vue.createApp) -->
@@ -23,7 +36,7 @@
         Vue.createApp({
             data() {
                 return {
-                    moodleData : [
+                    moodleData: [
                         {
                         }
                     ]
@@ -36,9 +49,9 @@
 
             methods: {
                 async getData() {
-                    let file = await fetch ('https://lms.mironpingel.dk/')
-                    let data = await file.json ()
-                    console.log (data)
+                    let file = await fetch('https://lms.mironpingel.dk/')
+                    let data = await file.json()
+                    console.log(data)
 
                     this.moodleData = data
                 }
