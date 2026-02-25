@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script type='text/javascript' src='https://moodle.easv.dk/4BkJ_nBPsIW7YQxfZ-qtfdGkHeFEyK8hIlp5UkTQzjh_Ub3UdtVPpPwp1B_h4EfbBmOXO7V0XQhcMpq_P95XnF0r-cv6jl3RUXuTMmUl9Y770E_X6RtGB28TwVmnO_tbNuhaoWq0KGPvRimSBZQn82_vYzeNCvymj6LFVl60gymXvK-YiMYcmhuV7_im2pGMGqDkPfPU-oa9rT4679a6w6ZAyIi2gpnEvnkoNzPsO5QPRh2ZxiINVcH7ss-XlTVwwWlzYTzfS3XdfnnvKO4bSWpIm-oBeY6jzE4hZuTNoixYICvsJuEin6ss0LlYTKNA9TDZCiwtDQ5FDeBGvIVfQQ9ShjVBn5C--yxYaUrK_9scGOHy9MsiCQ4xV5bf_L1xy86OAINjUZvG9gR-MwwAW86wsM20xKCkxYZ1GoCyZ050NDrfPeKsjFMRyp1bqHDkbIVGNQTNricK-TPMHeY0ATlrTBn1RtRewlKIc7SMojsaMOucRAb0uFA-h1eyOE-flBeHm2GRmy_I-KApsHp0mYUNGkrdtJo6YEcXq9aKd_DG-A'></script>
+  <meta charset="UTF-8" />
+  <title>Vue starter</title>
+  <style></style>
+</head>
+
+
+<body>
+  <div id="app">
+    <article>
+      <p>Jeg heder {{ navn }} og er {{ alder }}</p>
+    </article>
+  </div>
+
+  <!-- Vue import (skal komme før Vue.createApp) -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    Vue.createApp({
+      data() {
+       return {
+        navn: "Peter",
+        alder: 25,
+        // Tilføj data her..
+       } 
+      },
+
+      methods: {
+        // Tilføj funktioner her...
+      }
+    }).mount('#app')
+  </script>
+
+
+</body>
+
+</html>
