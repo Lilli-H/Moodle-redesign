@@ -24,10 +24,7 @@
             justify-content: space-between;
             height: 10%;
             padding: 10px;
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 0;
+          
         }
 
         header img {
@@ -125,7 +122,7 @@
                     <button>Filter</button>
                 </article>
             </article>
-            <section v-for="content of moodleData.weeks" @click="toggleAccordion">
+            <section v-for="content of moodleData.weeks" @click="toggleAccordion" v-if="!selectedDay">
                 <section class="week">
                     <div id="circle">
                         <h2>{{content.week_number}}</h2>
@@ -155,7 +152,7 @@
         </section>
 
         <section v-if="selectedDay">
-            <button>tilbage</button>
+            <button @click="goBack()">tilbage</button>
             <article>
                 <div class="newdayHeader">
                     <h3>Mandag</h3>
@@ -205,6 +202,10 @@
 
                 toggleAccordion() {
                     this.open = !this.open
+                },
+
+                goBack(){
+                  this.selectedDay = null
                 }
 
             }
