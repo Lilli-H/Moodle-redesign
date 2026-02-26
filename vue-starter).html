@@ -107,6 +107,9 @@
             padding: 5px;
             width: 100%;
         }
+        ::placeholder {
+            color: white;
+        }
 
         #inputthing {
             display: flex;
@@ -177,6 +180,29 @@
         .gray {
             color: var(--dybblå25);
         }
+
+        .lesson {
+            background-color: var(--sand25);
+            border-radius: 25px;
+            padding: 0 20px;
+        }
+
+        .goBack {
+            width: 25%;
+            background-color: var(--sand25);
+            color: var(--dybblå);
+            margin-bottom: 20px;
+        }
+
+        #button2,
+        #button {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        #button2 {
+            padding: 5px 0  5px 15px;
+        }
     </style>
 </head>
 
@@ -193,8 +219,8 @@
             <article class="top">
                 <h1>Multimedieproduktion 2</h1>
                 <article id="inputthing">
-                    <input type="text" placeholder="Søg">
-                    <button>Filter</button>
+                    <input type="text" placeholder=" Søg">
+                    <button id="button2"> <img src="filter.png" alt="">Filter</button>
                 </article>
             </article>
             <section class="all">
@@ -224,21 +250,24 @@
                         <li v-for="lists of daily.items">
                             <ol>{{ lists.title }}</ol>
                         </li>
-                        <p class="gray">Vis flere</p>
+                        <div id="button">
+                        <p class="gray">Se lektion</p> <img src="arrow.png" alt="">
+                    </div>
                     </article>
                 </section>
             </section>
         </section>
 
         <section v-if="selectedDay">
-            <button @click="goBack()">tilbage</button>
-            <article>
+            <button id="button2" class="goBack" @click="goBack()"> <img src="backArrow.png" alt="">tilbage</button>
+            <article class="lesson">
                 <div class="dayHeader">
-                    <h3>Mandag</h3>
-                    <p class="gray">Dato</p>
+                    <h3>{{ selectedDay.day_name }} </h3>
+                    <p class="gray">{{ selectedDay.date }} </p>
                 </div>
-                <li>
-                    <ol> </ol>
+                <li v-for="lesson of selectedDay.items">
+                    <ol>{{ lesson.title}} </ol>
+                    <p v-html="lesson.content_html"></p>
                 </li>
             </article>
         </section>
