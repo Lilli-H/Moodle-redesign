@@ -141,7 +141,7 @@
                         </div>
                     </article>
                 </section>
-                <article class="day" v-for="daily of content.days">
+                <article class="day" v-for="daily of content.days" @click="selectedThing(daily)">
                     <div class="dayHeader">
                         <h3> {{ daily.day_name }} </h3>
                         <p class="gray">Uge {{ content.week_number }}</p>
@@ -154,7 +154,7 @@
             </section>
         </section>
 
-        <section>
+        <section v-if="selectedDay">
             <button>tilbage</button>
             <article>
                 <div class="newdayHeader">
@@ -179,7 +179,9 @@
                     moodleData: [
                         {
                         }
-                    ]
+                    ],
+
+                    selectedDay :null
                 }
             },
 
@@ -194,6 +196,10 @@
                     console.log(data)
 
                     this.moodleData = data
+                },
+
+                selectetThing(selectedDay){
+                  this.selectedDay = selectedDay
                 }
 
                 // Tilføj funktioner her...
