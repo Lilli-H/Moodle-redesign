@@ -15,6 +15,10 @@
             --sand25: #F7F4F4;
         }
 
+      body{
+        background-color: var(--sand25);
+      }
+
       header{
         background-color: var(--dybblå);
         display: flex;
@@ -24,6 +28,7 @@
         position: fixed;
         left: 0;
         right: 0;
+        top: 0;
       }
 
       header img{
@@ -96,16 +101,16 @@
         <div id="profil"> <p>MF</p> </div>
       </header>
         <section>
-            <article>
+            <article class="top">
                 <h1>Multimedieproduktion 2</h1>
                 <article id="inputthing">
                     <input type="text" placeholder="Søg">
                     <button>Filter</button>
-                </article>
+                 </article>
             </article>
             <section v-for="content of moodleData" class="week">
                 <div id="circle">
-                    <h2>8</h2>
+                    <h2>{{content.week_number}}</h2>
                 </div>
                 <article>
                     <h2>Fra statisk til dynamisk</h2>
@@ -115,7 +120,7 @@
                     <p>Onsdag</p>
                     <p>Torsdag</p>
                     <p>Fredag</p>
-                </div>
+                    </div>
                 </article>
             </section>
         </section>
