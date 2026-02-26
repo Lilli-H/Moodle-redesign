@@ -2,12 +2,11 @@
 <html lang="en">
 
 <head>
-    <script type='text/javascript'
-        src=></script>
+    <script type='text/javascript' src=></script>
     <meta charset="UTF-8" />
     <title>Vue starter</title>
     <style>
-    :root {
+        :root {
             --searød: #EA5347;
             --petrol: #3C7D87;
             --dybblå: #002430;
@@ -15,56 +14,57 @@
             --sand25: #F7F4F4;
         }
 
-      body{
-        background-color: var(--sand25);
-      }
+        body {
+            background-color: var(--sand25);
+        }
 
-      header{
-        background-color: var(--dybblå);
-        display: flex;
-        justify-content: space-between;
-        height: 10%;
-        padding: 10px;
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-      }
+        header {
+            background-color: var(--dybblå);
+            display: flex;
+            justify-content: space-between;
+            height: 10%;
+            padding: 10px;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
 
-      header img{
-        width: 50px;
-        height: 20px;
-      }
+        header img {
+            width: 50px;
+            height: 20px;
+        }
 
-      #profil{
-        border-radius: 100px;
-        background-color: var(--searød);
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+        #profil {
+            border-radius: 100px;
+            background-color: var(--searød);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-      #profil p{
-        color: white;
-      }
+        #profil p {
+            color: white;
+        }
 
-      input, button{
-        color: white;
-        background-color: var(--petrol);
-        border: 1,5px solid var(--dybblå);
-        border-radius: 5px;
-        padding: 5px;
-      }
+        input,
+        button {
+            color: white;
+            background-color: var(--petrol);
+            border: 1, 5px solid var(--dybblå);
+            border-radius: 5px;
+            padding: 5px;
+        }
 
-      #inputthing{
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 8%;
-      }
+        #inputthing {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8%;
+        }
 
-      #circle {
+        #circle {
             border-radius: 100px;
             border: 1.5px solid var(--searød);
             width: 110px;
@@ -90,7 +90,7 @@
             display: flex;
             flex-wrap: wrap;
         }
-        
+
         .day {
             background-color: #F2E0DF;
             border-radius: 25px;
@@ -111,42 +111,59 @@
 
 <body>
     <div id="app">
-      <header>
-        <img src="/image 2.png" alt="logo">
-        <div id="profil"> <p>MF</p> </div>
-      </header>
+        <header>
+            <img src="/image 2.png" alt="logo">
+            <div id="profil">
+                <p>MF</p>
+            </div>
+        </header>
         <section>
             <article class="top">
                 <h1>Multimedieproduktion 2</h1>
                 <article id="inputthing">
                     <input type="text" placeholder="Søg">
                     <button>Filter</button>
-                 </article>
+                </article>
             </article>
-            <section v-for="content of moodleData.weeks" class="week">
-                <div id="circle">
-                    <h2>{{content.week_number}}</h2>
-                </div>
-                <article>
-                    <h2> {{ content.week_label }} </h2>
-                    <div class="days">
-                    <p>Mandag</p>
-                    <p>Tirsdag</p>
-                    <p>Onsdag</p>
-                    <p>Torsdag</p>
-                    <p>Fredag</p>
+            <section v-for="content of moodleData.weeks">
+                <section class="week">
+                    <div id="circle">
+                        <h2>{{content.week_number}}</h2>
                     </div>
+                    <article>
+                        <h2> {{ content.week_label }} </h2>
+                        <div class="days">
+                            <p>Mandag</p>
+                            <p>Tirsdag</p>
+                            <p>Onsdag</p>
+                            <p>Torsdag</p>
+                            <p>Fredag</p>
+                        </div>
+                    </article>
+                </section>
+                <article class="day" v-for="daily of content.days">
+                    <div class="dayHeader">
+                        <h3> {{ daily.day_name }} </h3>
+                        <p class="gray">Uge {{ content.week_number }}</p>
+                    </div>
+                    <li v-for="lists of daily.items">
+                        <ol>{{ lists.title }}</ol>
+                    </li>
+                    <p class="gray">Vis flere</p>
                 </article>
             </section>
-            <article class="day">
-                <div class="dayHeader">
-                <h3>Mandag</h3>
-                <p class="gray">Uge 5</p>
-            </div>
-            <li>
-                <ol>1. Fra statisk til dynamisk</ol>
-            </li>
-            <p class="gray">Vis flere</p>
+        </section>
+
+        <section>
+            <button>tilbage</button>
+            <article>
+                <div class="newdayHeader">
+                    <h3>Mandag</h3>
+                    <p class="gray">Dato</p>
+                </div>
+                <li>
+                    <ol> </ol>
+                </li>
             </article>
         </section>
 
