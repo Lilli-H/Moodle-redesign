@@ -10,8 +10,11 @@
             --searød: #EA5347;
             --petrol: #3C7D87;
             --dybblå: #002430;
+            --dybblå25: #918E8F;
             --sand: #DED4D2;
-            --sand25: #F7F4F4;
+            --ler25: rgba(227, 163, 159, 0.25);
+            --sand25: rgba(222, 212, 210, 0.25);
+            --dropshadow: px 4px 4px 0 rgba(0, 36, 48, 0.25);
         }
 
         body {
@@ -73,7 +76,7 @@
 
         .week {
             display: flex;
-            background-color: var(--sand);
+            background-color: var(--sand25);
             border-radius: 76.5px;
             padding: 10px;
             height: fit-content;
@@ -81,6 +84,7 @@
             width: fit-content;
             padding-right: 50px;
             margin-bottom: 15px;
+            box-shadow: var(--dropshadow);
         }
 
         .days {
@@ -100,7 +104,7 @@
         }
 
         .gray {
-            color: var(--dybblå);
+            color: var(--dybblå25);
         }
     </style>
 </head>
