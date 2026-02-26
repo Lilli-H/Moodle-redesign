@@ -5,6 +5,11 @@
     <script type='text/javascript' src=></script>
     <meta charset="UTF-8" />
     <title>Vue starter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --searød: #EA5347;
@@ -14,11 +19,55 @@
             --sand: #DED4D2;
             --ler25: rgba(227, 163, 159, 0.25);
             --sand25: rgba(222, 212, 210, 0.25);
-            --dropshadow: px 4px 4px 0 rgba(0, 36, 48, 0.25);
         }
 
         body {
             background-color: var(--sand25);
+            width: 500px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h6,
+        p,
+        input,
+        button,
+        li {
+            font-family: "Poppins";
+        }
+
+        p,
+        input,
+        button {
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            justify-self: center;
+        }
+
+        h2 {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        h6 {
+            font-size: 48px;
+            font-weight: 500;
+            color: var(--petrol);
         }
 
         header {
@@ -27,7 +76,7 @@
             justify-content: space-between;
             height: 10%;
             padding: 10px;
-          
+
         }
 
         header img {
@@ -56,22 +105,44 @@
             border: 1, 5px solid var(--dybblå);
             border-radius: 5px;
             padding: 5px;
+            width: 100%;
         }
 
         #inputthing {
             display: flex;
             justify-content: space-between;
             margin-bottom: 8%;
+            gap: 50px;
         }
 
-        #circle {
+        .all {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+
+        .circle {
+            border: 3px solid var(--petrol);
             border-radius: 100px;
-            border: 1.5px solid var(--searød);
             width: 110px;
             height: 110px;
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .currentcircle {
+            border-radius: 100px;
+            border: 3px solid var(--searød);
+            width: 110px;
+            height: 110px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .colour {
+            color: var(--searød);
         }
 
         .week {
@@ -81,10 +152,8 @@
             padding: 10px;
             height: fit-content;
             gap: 25px;
-            width: fit-content;
             padding-right: 50px;
             margin-bottom: 15px;
-            box-shadow: var(--dropshadow);
         }
 
         .days {
@@ -96,11 +165,13 @@
             background-color: #F2E0DF;
             border-radius: 25px;
             padding: 5px 20px;
+            margin-bottom: 10px;
         }
 
         .dayHeader {
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
         .gray {
@@ -126,39 +197,43 @@
                     <button>Filter</button>
                 </article>
             </article>
-            <section v-for="content of moodleData.weeks" @click="toggleAccordion" v-if="!selectedDay">
-                <section class="week">
-                    <div id="circle">
-                        <h2>{{content.week_number}}</h2>
-                    </div>
-                    <article>
-                        <h2> {{ content.week_label }} </h2>
-                        <div class="days">
-                            <p>Mandag</p>
-                            <p>Tirsdag</p>
-                            <p>Onsdag</p>
-                            <p>Torsdag</p>
-                            <p>Fredag</p>
+            <section class="all">
+                <section v-for="content of moodleData.weeks" @click="toggleAccordion(content.week_number)"
+                    v-if="!selectedDay">
+                    <section class="week">
+                        <div class="circle" :class="{'currentcircle' : content.is_current === true}">
+                            <h6 :class="{'colour' : content.is_current === true}">{{content.week_number}} </h2>
                         </div>
+                        <article>
+                            <h2> {{ content.week_label }} </h2>
+                            <div class="days">
+                                <p>Mandag</p>
+                                <p>Tirsdag</p>
+                                <p>Onsdag</p>
+                                <p>Torsdag</p>
+                                <p>Fredag</p>
+                            </div>
+                        </article>
+                    </section>
+                    <article class="day" v-for="daily of content.days" @click="selectedThing(daily)"
+                        v-if="content.week_number === selectedWeek">
+                        <div class="dayHeader">
+                            <h3> {{ daily.day_name }} </h3>
+                            <p class="gray">Uge {{ content.week_number }}</p>
+                        </div>
+                        <li v-for="lists of daily.items">
+                            <ol>{{ lists.title }}</ol>
+                        </li>
+                        <p class="gray">Vis flere</p>
                     </article>
                 </section>
-                <article class="day" v-for="daily of content.days" @click="selectedThing(daily)" v-if="open">
-                    <div class="dayHeader">
-                        <h3> {{ daily.day_name }} </h3>
-                        <p class="gray">Uge {{ content.week_number }}</p>
-                    </div>
-                    <li v-for="lists of daily.items">
-                        <ol>{{ lists.title }}</ol>
-                    </li>
-                    <p class="gray">Vis flere</p>
-                </article>
             </section>
         </section>
 
         <section v-if="selectedDay">
             <button @click="goBack()">tilbage</button>
             <article>
-                <div class="newdayHeader">
+                <div class="dayHeader">
                     <h3>Mandag</h3>
                     <p class="gray">Dato</p>
                 </div>
@@ -182,8 +257,8 @@
                         }
                     ],
 
-                    selectedDay :null,
-                    open: false,
+                    selectedDay: null,
+                    selectedWeek: null,
                 }
             },
 
@@ -200,16 +275,16 @@
                     this.moodleData = data
                 },
 
-                selectedThing(selectedDay){
-                  this.selectedDay = selectedDay
+                selectedThing(selectedDay) {
+                    this.selectedDay = selectedDay
                 },
 
-                toggleAccordion() {
-                    this.open = !this.open
+                toggleAccordion(weekNumber) {
+                    this.selectedWeek = weekNumber
                 },
 
-                goBack(){
-                  this.selectedDay = null
+                goBack() {
+                    this.selectedDay = null
                 }
 
             }
