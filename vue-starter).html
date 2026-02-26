@@ -125,7 +125,7 @@
                     <button>Filter</button>
                 </article>
             </article>
-            <section v-for="content of moodleData.weeks">
+            <section v-for="content of moodleData.weeks" @click="toggleAccordion">
                 <section class="week">
                     <div id="circle">
                         <h2>{{content.week_number}}</h2>
@@ -141,7 +141,7 @@
                         </div>
                     </article>
                 </section>
-                <article class="day" v-for="daily of content.days" @click="selectedThing(daily)">
+                <article class="day" v-for="daily of content.days" @click="selectedThing(daily)" v-if="open">
                     <div class="dayHeader">
                         <h3> {{ daily.day_name }} </h3>
                         <p class="gray">Uge {{ content.week_number }}</p>
@@ -181,7 +181,8 @@
                         }
                     ],
 
-                    selectedDay :null
+                    selectedDay :null,
+                    open: false,
                 }
             },
 
@@ -198,11 +199,14 @@
                     this.moodleData = data
                 },
 
-                selectetThing(selectedDay){
+                selectedThing(selectedDay){
                   this.selectedDay = selectedDay
+                },
+
+                toggleAccordion() {
+                    this.open = !this.open
                 }
 
-                // Tilføj funktioner her...
             }
         }).mount('#app')
     </script>
