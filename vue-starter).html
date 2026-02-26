@@ -3,7 +3,7 @@
 
 <head>
     <script type='text/javascript'
-        src='https://moodle.easv.dk/4BkJ_nBPsIW7YQxfZ-qtfdGkHeFEyK8hIlp5UkTQzjh_Ub3UdtVPpPwp1B_h4EfbBmOXO7V0XQhcMpq_P95XnF0r-cv6jl3RUXuTMmUl9Y770E_X6RtGB28TwVmnO_tbNuhaoWq0KGPvRimSBZQn82_vYzeNCvymj6LFVl60gymXvK-YiMYcmhuV7_im2pGMGqDkPfPU-oa9rT4679a6w6ZAyIi2gpnEvnkoNzPsO5QPRh2ZxiINVcH7ss-XlTVwwWlzYTzfS3XdfnnvKO4bSWpIm-oBeY6jzE4hZuTNoixYICvsJuEin6ss0LlYTKNA9TDZCiwtDQ5FDeBGvIVfQQ9ShjVBn5C--yxYaUrK_9scGOHy9MsiCQ4xV5bf_L1xy86OAINjUZvG9gR-MwwAW86wsM20xKCkxYZ1GoCyZ050NDrfPeKsjFMRyp1bqHDkbIVGNQTNricK-TPMHeY0ATlrTBn1RtRewlKIc7SMojsaMOucRAb0uFA-h1eyOE-flBeHm2GRmy_I-KApsHp0mYUNGkrdtJo6YEcXq9aKd_DG-A'></script>
+        src=></script>
     <meta charset="UTF-8" />
     <title>Vue starter</title>
     <style>
@@ -90,6 +90,21 @@
             display: flex;
             flex-wrap: wrap;
         }
+        
+        .day {
+            background-color: #F2E0DF;
+            border-radius: 25px;
+            padding: 5px 20px;
+        }
+
+        .dayHeader {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .gray {
+            color: var(--dybblå);
+        }
     </style>
 </head>
 
@@ -108,12 +123,12 @@
                     <button>Filter</button>
                  </article>
             </article>
-            <section v-for="content of moodleData" class="week">
+            <section v-for="content of moodleData.weeks" class="week">
                 <div id="circle">
                     <h2>{{content.week_number}}</h2>
                 </div>
                 <article>
-                    <h2>Fra statisk til dynamisk</h2>
+                    <h2> {{ content.week_label }} </h2>
                     <div class="days">
                     <p>Mandag</p>
                     <p>Tirsdag</p>
@@ -123,6 +138,16 @@
                     </div>
                 </article>
             </section>
+            <article class="day">
+                <div class="dayHeader">
+                <h3>Mandag</h3>
+                <p class="gray">Uge 5</p>
+            </div>
+            <li>
+                <ol>1. Fra statisk til dynamisk</ol>
+            </li>
+            <p class="gray">Vis flere</p>
+            </article>
         </section>
 
 
