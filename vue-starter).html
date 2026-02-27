@@ -232,13 +232,6 @@
                         </div>
                         <article>
                             <h2> {{ content.week_label }} </h2>
-                            <div class="days">
-                                <p>Mandag</p>
-                                <p>Tirsdag</p>
-                                <p>Onsdag</p>
-                                <p>Torsdag</p>
-                                <p>Fredag</p>
-                            </div>
                         </article>
                     </section>
                     <article class="day" v-for="daily of content.days" @click="selectedThing(daily)"
@@ -287,7 +280,7 @@
                     ],
 
                     selectedDay: null,
-                    selectedWeek: null,
+                    selectedWeek: null
                 }
             },
 
@@ -299,7 +292,6 @@
                 async getData() {
                     let file = await fetch('https://lms.mironpingel.dk/')
                     let data = await file.json()
-                    console.log(data)
 
                     this.moodleData = data
                 },
