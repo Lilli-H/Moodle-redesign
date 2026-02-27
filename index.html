@@ -38,9 +38,10 @@
 
         p,
         input,
-        button {
-            font-size: 14px;
-            font-weight: 400;
+        button,
+        li {
+        font-size: clamp(16px, 2vw, 36px);
+        font-weight: 400;
         }
 
         li {
@@ -48,18 +49,18 @@
         }
 
         h1 {
-            font-size: 24px;
+            font-size: clamp(24px, 8vw, 64px);
             font-weight: 700;
             justify-self: center;
         }
 
         h2 {
-            font-size: 14px;
+            font-size: clamp(18px, 2vw, 36px);
             font-weight: 700;
         }
 
         h3 {
-            font-size: 20px;
+            font-size: clamp(20px, 5vw, 48px);
             font-weight: 700;
         }
 
@@ -79,15 +80,16 @@
         }
 
         header img {
-            width: 50px;
-            height: 20px;
+            width: auto;
+            height: 4vw;
+
         }
 
         #profil {
             border-radius: 100px;
             background-color: var(--searød);
-            width: 30px;
-            height: 30px;
+            width: 3.5vw;
+            height: 3.5vw;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -106,6 +108,7 @@
             padding: 5px;
             width: 100%;
         }
+
         ::placeholder {
             color: white;
         }
@@ -199,8 +202,9 @@
             align-items: center;
             gap: 15px;
         }
+
         #button2 {
-            padding: 5px 0  5px 15px;
+            padding: 5px 0 5px 15px;
         }
     </style>
 </head>
@@ -209,7 +213,7 @@
 <body>
     <div id="app">
         <header>
-            <img src="/image 2.png" alt="logo">
+            <img src="sea.png" alt="logo">
             <div id="profil">
                 <p>MF</p>
             </div>
@@ -243,8 +247,8 @@
                             <ol>{{ lists.title }}</ol>
                         </li>
                         <div id="button">
-                        <p class="gray">Se lektion</p> <img src="arrow.png" alt="">
-                    </div>
+                            <p class="gray">Se lektion</p> <img src="arrow.png" alt="">
+                        </div>
                     </article>
                 </section>
             </section>
